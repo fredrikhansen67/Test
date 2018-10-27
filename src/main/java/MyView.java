@@ -1,24 +1,23 @@
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.event.WindowEvent;
+
 
 /**
- * Created by pappa on 2018-10-27.
+ * Created by Fredrik Hansen on 2018-10-27.
  */
 
 public class MyView extends JFrame {
+    private JTextField passwordText;
 
     private MyView(){
         //Close window on 'X' press
-        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        this.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         JLabel labelName = new JLabel("Enter Name: ");
         JLabel labelDescription = new JLabel("Enter Password: ");
         JTextField textName = new JTextField(20);
+        passwordText = new JTextField(20);
         textName.setFocusable(false);
         textName.setText(System.getProperty("user.name"));
-        JTextField passwordText = new JTextField(20);
 
         JPasswordField password = new JPasswordField(20);
         JButton buttonLogin = new JButton("Login");
@@ -57,7 +56,7 @@ public class MyView extends JFrame {
         password.requestFocusInWindow();
 
         buttonLogin.addActionListener(e -> {
-            System.out.println("Button pressed");
+
             this.dispose();
         });
         // set border for the panel
@@ -71,6 +70,8 @@ public class MyView extends JFrame {
 
 
     }
+
+    protected String getPwd(){return passwordText.getText();}
     public static void main(String[] args) {
         // set look and feel to the system look and feel
         try {
