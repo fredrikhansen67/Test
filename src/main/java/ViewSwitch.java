@@ -25,6 +25,7 @@ public class ViewSwitch {
             default:
                 throw new IllegalArgumentException("Invalid day of the week: " + dayOfWeekArg);
         }
+
         return typeOfDay;
     }
 
