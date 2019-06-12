@@ -1,0 +1,66 @@
+<!doctype html>
+<html>
+<meta charset="utf-8"/>
+<head>
+<title>Chart</title>
+</head>
+<body>
+	<style>
+		.cancassen {
+		}
+	</style>
+	<div id="cancassen" style="position: relative; height:40vh; width:80vw">
+		<canvas id="myChart"></canvas>
+	</div>
+	<script src="src/Chart.min.js"></script>
+	<script>
+		readTextFile("http://192.168.1.189/stats.txt");
+		var ctx = document.getElementById('myChart').getContext('2d');
+		var chart = new Chart(ctx, {
+			// The type of chart we want to create
+			type: 'line',
+
+			// The data for our dataset
+			data: {
+				labels: ['2019-01-02', '2019-02-02', '2019-03-02', '2019-04-02', '2019-05-02', '2019-06-02', '2019-07-02', '2019-08-02', '2019-09-02', '2019-10-02', '2019-11-02', '2019-12-02', '2020-01-02',
+				'2019-01-02', '2019-02-02', '2019-03-02', '2019-04-02', '2019-05-02', '2019-06-02', '2019-07-02', '2019-08-02', '2019-09-02', '2019-10-02', '2019-11-02', '2019-12-02', '2020-01-02', '2020-02-02'],
+				datasets: [{
+					label: 'stats',
+					forgroundColor: 'rgb(ff, ff, ff)',
+					backgroundColor: 'rgb(155, 255, 155)',
+					borderColor: 'rgb(255, 255, 11)',
+					data: [100, 10, 5, 32, 20, 30, 45, 10, 5, 22, 20, 30, 45,
+					0, 10, 5, 2, 20, 30, 45, 10, 5, 9, 20, 30, 45, 90]
+				}]
+			},
+
+			// Configuration options go here
+			options: {}
+		});
+		
+		function readTextFile(file)
+		{
+			var rawFile = new XMLHttpRequest();
+			rawFile.open("GET", file, true);
+			rawFile.onreadystatechange = function ()
+			{
+			console.log("ready " + rawFile.readyStat + " stat :" + rawFile.status);
+				if(rawFile.readyState === 4)
+				{
+					if(rawFile.status === 200 || rawFile.status == 0)
+					{
+						var allText = rawFile.responseText;
+						alert(allText);
+					}
+				}
+			}
+			rawFile.send(null);
+		}
+
+
+	</script>
+			<script type="text/javascript">
+			
+			</script>
+</body>
+</html>
